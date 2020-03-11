@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native'
 import { SearchBar } from 'react-native-elements';
 
 export default class Search extends React.Component {
@@ -14,11 +15,12 @@ export default class Search extends React.Component {
     const { search } = this.state;
 
     return (
+      <View>
       <SearchBar
         placeholder="Type Here..."
         onChangeText={this.updateSearch}
         value={search}
-      />
+      /></View>
     );
   }
 }
