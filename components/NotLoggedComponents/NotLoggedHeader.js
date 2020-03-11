@@ -11,11 +11,9 @@ export default class NotLoggedHeader extends React.Component {
     render(){
         return (
           
-            <NavigationContainer style={styles.container}>
-                <Stack.Navigator initialRouteName="Login">
-                    <Stack.Screen name="Login" component={Login} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <View style={styles.container}>
+                <Login apiURI='http://192.168.43.102:3000' onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>
+            </View>
           
            // <Login apiURI='http://85.23.62.54:3000'></Login>
           

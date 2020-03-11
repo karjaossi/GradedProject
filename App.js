@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import * as SecureStore from 'expo-secure-store'
 import NotLoggedHeader from './components/NotLoggedComponents/NotLoggedHeader';
+import LoggedInHeader from './components/LoginComponents/LoggedInHeader';
 
 const secureStoreTokenName = "loginToken";
 
@@ -16,6 +17,8 @@ export default class App extends React.Component{
     };
   }
   componentDidMount() {
+    SecureStore.deleteItemAsync(secureStoreTokenName);
+    //Remember to delete this!!!!!^^^^^^^^^^^^^^^^^^^^^^^^
     SecureStore.getItemAsync(secureStoreTokenName)
       .then(response => {
         console.log("SecureStore.getItemAsync success")        
@@ -34,15 +37,37 @@ export default class App extends React.Component{
         this.setState({ activeJWT: responseJWT, isCheckingTokenStorage: false })
       })    
   }
- 
-    render(){
-      if (this.state.activeJWT == null)  { 
+
+  onLogout = () => {
+    console.log("Logout Clicked");
+    this.setState({ activeJWT: null })
+    SecureStore.deleteItemAsync(secureStoreTokenName);
+  }
+
+  authentication = () => {
+    if (this.state.activeJWT == null)  { 
+      console.log(this.state.activeJWT)
       return (
         <View style={styles.container}>
-          <NotLoggedHeader></NotLoggedHeader>
+          <NotLoggedHeader onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedHeader>
         </View>
       );
     }
+    else{
+      return (
+        <View style={styles.container}>
+          <LoggedInHeader onLogout={ this.onLogout }></LoggedInHeader>
+        </View>
+      );
+    }
+  }
+ 
+  render(){
+    return(
+      <View style={{flex : 1}}>
+        {this.authentication()}
+      </View>
+    );
   }
 }
 
