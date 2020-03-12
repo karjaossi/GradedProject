@@ -5,6 +5,8 @@ import Search from '../SearchComponents/Search';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AllListings from '../ListingComponents/AllListings';
+import MyListings from '../ListingComponents/MyListings';
+import AddListing from '../ListingComponents/AddListing'
 import Header from '../Header';
 
 
@@ -29,7 +31,8 @@ export default class LoggedInContainer extends React.Component {
                 <Drawer.Screen name="Listings" component={AllListings}/>
                 <Drawer.Screen name="Search" component={Search}/>
                 <Drawer.Screen name="Login" component={Search}/>
-                <Drawer.Screen name="My Listings" component={Search}/>
+                <Drawer.Screen name="My Listings" component={MyListings}/>
+                <Drawer.Screen name="Add Listing" component={AddListing}/>
                 <Drawer.Screen name="Logout">{this.props.onLogout}</Drawer.Screen>            
               </Drawer.Navigator>
             </NavigationContainer>

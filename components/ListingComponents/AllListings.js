@@ -16,12 +16,11 @@ export default class AllListings extends React.Component {
             method: 'GET'
         } )
             .then( response => response.json() )
-            .then( json =>{console.log(json); this.setState({items: json.everylisting })}); 
+            .then( json =>{console.log(json); /*this.setState({items: json.everylisting })*/}); 
     }
     
 
   render() {
-    console.log(JSON.stringify(this.state.items));
     return (
       <View style={styles.listingsContainer}>
         <Text>Placeholder</Text>

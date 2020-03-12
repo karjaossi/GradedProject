@@ -66,7 +66,7 @@ export default class App extends React.Component{
                     ></LoggedInContainer>}
     </Stack.Screen>
     );*/
-
+    render(){
     if (this.state.activeJWT == null)  { 
       console.log(this.state.activeJWT)
       return (
@@ -96,16 +96,8 @@ export default class App extends React.Component{
     }*/
   }
  
-  render(){
-    return(
-      <View style={{ flex: 1}}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            { this.authentication() }
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
+
+
   }
 }
 
