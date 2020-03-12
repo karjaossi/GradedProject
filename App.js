@@ -50,17 +50,20 @@ export default class App extends React.Component{
       console.log(this.state.activeJWT)
       return (
         <View style={styles.header}>
-        <Header></Header>
-          <View style={styles.container}>
-            <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedContainer>
-          </View>
+          <Header></Header>
+            <View style={styles.container}>
+              <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedContainer>
+            </View>
         </View>
       );
     }
     else{
       return (
-        <View style={styles.container}>
-          <LoggedInContainer onLogout={ this.onLogout }></LoggedInContainer>
+        <View style={styles.header}>
+          <Header></Header>
+            <View style={styles.container}>
+              <LoggedInContainer onLogout={ this.onLogout }></LoggedInContainer>
+            </View>
         </View>
       );
     }
