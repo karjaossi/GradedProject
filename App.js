@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 
 import * as SecureStore from 'expo-secure-store'
-import NotLoggedHeader from './components/NotLoggedComponents/NotLoggedHeader';
+import NotLoggedHeader from './components/NotLoggedComponents/NotLoggedContainer';
 
 const secureStoreTokenName = "loginToken";
 
