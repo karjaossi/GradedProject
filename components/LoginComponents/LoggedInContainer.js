@@ -15,6 +15,35 @@ const Drawer = createDrawerNavigator();
 
 export default class LoggedInContainer extends React.Component {
 
+    onListingAdd = (title, description, category, location, images, priceString, delivery) => {
+        var price = parseInt(priceString);
+        console.log("JWT " + this.props.activeJWT);
+        console.log(JSON.stringify({ title, description, category, location, images, price, delivery }));
+        fetch('http://192.168.43.102:3000' + '/listings', {
+            method: 'POST',
+            headers: {
+                "Authorization": "Bearer " + this.props.activeJWT,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ title, description, category, location, images, price, delivery })
+            })
+            .then(response => {
+            if (response.ok == false) {
+                throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
+            }
+            return response.json();
+            })
+            .then(json => {
+            console.log("Listing POST successful")
+            console.log("Received following JSON");
+            console.log(json);
+            })
+            .catch(error => {
+            console.log("Error message:")
+            console.log(error.message)
+            });
+    }
+
   static navigationOptions = function(props) {
     return {
       title: 'Test',
@@ -23,7 +52,6 @@ export default class LoggedInContainer extends React.Component {
   };
   
     render(){
-          console.log(this.props.onLoginReceiveJWT)
           return(
             <View style={ styles.container }>
             <NavigationContainer>
@@ -32,7 +60,7 @@ export default class LoggedInContainer extends React.Component {
                 <Drawer.Screen name="Search" component={Search}/>
                 <Drawer.Screen name="Login" component={Search}/>
                 <Drawer.Screen name="My Listings" component={MyListings}/>
-                <Drawer.Screen name="Add Listing" component={AddListing}/>
+                <Drawer.Screen name="Add Listing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd}></AddListing>}</Drawer.Screen>
                 <Drawer.Screen name="Logout">{this.props.onLogout}</Drawer.Screen>            
               </Drawer.Navigator>
             </NavigationContainer>

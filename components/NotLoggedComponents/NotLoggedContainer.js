@@ -20,7 +20,6 @@ export default class NotLoggedContainer extends React.Component {
   };
   
     render(){
-          console.log(this.props.onLoginReceiveJWT)
           return(
             <View style={ styles.container }>
             <NavigationContainer independent={true}>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableHighlight, Button } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight } from 'react-native'
 
 const AddListing = (props) => {
 
@@ -7,8 +7,9 @@ const AddListing = (props) => {
   const [description, setDescription] = useState("Example description");  
   const [category, setCategory] = useState("Example category");  
   const [location, setLocation] = useState("Example location");   
-  const [price, setPrice] = useState(21);  
-  const [delivery, setDelivery] = useState("Example delivery"); 
+  const [priceString, setPrice] = useState("1");  
+  const [delivery, setDelivery] = useState("Example delivery");
+  const [images, setImages] = useState("null"); 
   
   return (
     <View style={{ alignItems: 'center', flex: 1, justifyContent: 'flex-start', marginTop: 30}}>        
@@ -37,7 +38,7 @@ const AddListing = (props) => {
 
             <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
                 onChangeText={ value => setPrice(value) }
-                value={ price }
+                value={ priceString }
                 keyboardType='numeric'>
             </TextInput>
 
@@ -47,7 +48,7 @@ const AddListing = (props) => {
             </TextInput>    
 
 
-          <TouchableHighlight onPress={ () => props.onListingAdd(title, description, category, location, price, delivery) }>
+          <TouchableHighlight onPress={ () => props.onListingAdd(title, description, category, location, images, priceString, delivery) }>
             <View style={ { flex: 1, backgroundColor: 'blue',} }>
               <Text style={{ color: 'white', padding: 10 }}>Add listing!</Text>
             </View>

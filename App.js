@@ -68,7 +68,6 @@ export default class App extends React.Component{
     );*/
     render(){
     if (this.state.activeJWT == null)  { 
-      console.log(this.state.activeJWT)
       return (
         <View style={styles.header}>
           <Header></Header>
@@ -83,7 +82,7 @@ export default class App extends React.Component{
         <View style={styles.header}>
           <Header></Header>
             <View style={styles.container}>
-              <LoggedInContainer onLogout={ this.onLogout }></LoggedInContainer>
+              <LoggedInContainer onLogout={ this.onLogout } activeJWT={ this.state.activeJWT }></LoggedInContainer>
             </View>
         </View>
       );
