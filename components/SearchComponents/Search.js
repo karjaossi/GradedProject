@@ -15,14 +15,12 @@ export default class Search extends React.Component {
     const { search } = this.state;
 
     return (
-      <View style={styles.topBlock}>
       <View>
       <SearchBar style={ styles.searchBar }
         placeholder="Search here..."
         onChangeText={this.updateSearch}
         value={search}
       />
-      </View>
       </View>
     );
   }
@@ -34,7 +32,4 @@ const styles = StyleSheet.create({
       height: '100%',
       justifyContent: 'center'
   },
-  topBlock: {
-    paddingTop: 45
-  }
 })

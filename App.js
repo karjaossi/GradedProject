@@ -46,7 +46,7 @@ export default class App extends React.Component{
     SecureStore.deleteItemAsync(secureStoreTokenName);
   }
 
-  authentication = () => {
+ /* authentication = () => {
     const notLogged = (
       <Stack.Screen name="NotLogged" options={{headerShown: false}}>
         { props => <NotLoggedContainer 
@@ -65,14 +65,35 @@ export default class App extends React.Component{
                       onLogout={ this.onLogout }
                     ></LoggedInContainer>}
     </Stack.Screen>
-    );
+    );*/
 
     if (this.state.activeJWT == null)  { 
-      return notLogged;
+      console.log(this.state.activeJWT)
+      return (
+        <View style={styles.header}>
+          <Header></Header>
+            <View style={styles.container}>
+              <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedContainer>
+            </View>
+        </View>
+      );
+    }
+    else{
+      return (
+        <View style={styles.header}>
+          <Header></Header>
+            <View style={styles.container}>
+              <LoggedInContainer onLogout={ this.onLogout }></LoggedInContainer>
+            </View>
+        </View>
+      );
+
+     /* return notLogged;
     }
     else{
         return loggedIn;
-    }
+ master
+    }*/
   }
  
   render(){
