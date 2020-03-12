@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 
 import * as SecureStore from 'expo-secure-store'
-import NotLoggedHeader from './components/NotLoggedComponents/NotLoggedContainer';
-import LoggedInHeader from './components/LoginComponents/LoggedInContainer';
+import NotLoggedContainer from './components/NotLoggedComponents/NotLoggedContainer';
+import LoggedInContainer from './components/LoginComponents/LoggedInContainer';
+import Header from './components/Header';
 
 const secureStoreTokenName = "loginToken";
 
@@ -48,15 +49,18 @@ export default class App extends React.Component{
     if (this.state.activeJWT == null)  { 
       console.log(this.state.activeJWT)
       return (
-        <View style={styles.container}>
-          <NotLoggedHeader onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedHeader>
+        <View style={styles.header}>
+        <Header></Header>
+          <View style={styles.container}>
+            <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedContainer>
+          </View>
         </View>
       );
     }
     else{
       return (
         <View style={styles.container}>
-          <LoggedInHeader onLogout={ this.onLogout }></LoggedInHeader>
+          <LoggedInContainer onLogout={ this.onLogout }></LoggedInContainer>
         </View>
       );
     }
@@ -78,4 +82,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    flex: 1,
+    paddingTop: 45
+  }
 });

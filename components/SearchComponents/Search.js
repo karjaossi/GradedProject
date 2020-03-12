@@ -15,13 +15,26 @@ export default class Search extends React.Component {
     const { search } = this.state;
 
     return (
+      <View style={styles.topBlock}>
       <View>
-      <SearchBar
-        placeholder="Type Here..."
+      <SearchBar style={ styles.searchBar }
+        placeholder="Search here..."
         onChangeText={this.updateSearch}
         value={search}
       />
       </View>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  searchBar: {
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center'
+  },
+  topBlock: {
+    paddingTop: 45
+  }
+})
