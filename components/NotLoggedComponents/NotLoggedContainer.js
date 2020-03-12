@@ -23,7 +23,7 @@ export default class NotLoggedContainer extends React.Component {
           console.log(this.props.onLoginReceiveJWT)
           return(
             <View style={ styles.container }>
-            <NavigationContainer>
+            <NavigationContainer independent={true}>
               <Drawer.Navigator style={ styles.menu }>
                   <Drawer.Screen name="Login">{ props => <Login {...props} onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>}</Drawer.Screen>
                   <Drawer.Screen name="Search" component={Search}/>
