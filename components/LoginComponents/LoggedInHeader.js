@@ -1,17 +1,15 @@
-/*import React from 'react';
-import { createStackNavigator, View, Button, StyleSheet, Text } from '@react-navigation/stack';
+import React from 'react';
+import { View, Button, Text } from 'react-native';
 
-export default class LoggedInHeader extends React.Component {
-    render(){
-        
-    console.log("test");
-        return (
+const LoggedInHeader = (props) => {
+    return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Button
-            title="Logout"
-            onPress={ this.props.onLogout }
-            />
+            <Text>Logged in!</Text>
+            <Button title="Add a listing" onPress={() => props.navigation.navigate('AddListing')}></Button>
+            <Button title="Show all listings"></Button>
+            <Button title="Logout" onPress={ props.onLogout }/>
         </View>
-        );  
-    }
-}*/
+    );  
+}
+
+export default LoggedInHeader

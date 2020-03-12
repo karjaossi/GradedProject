@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 import * as SecureStore from 'expo-secure-store'
 import NotLoggedContainer from './components/NotLoggedComponents/NotLoggedContainer';
 import LoggedInContainer from './components/LoginComponents/LoggedInContainer';
 import Header from './components/Header';
 
+const Stack = createStackNavigator();
 const secureStoreTokenName = "loginToken";
 
 export default class App extends React.Component{
@@ -13,17 +16,15 @@ export default class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      isCheckingTokenStorage: true,
       activeJWT: null
     };
   }
   componentDidMount() {
     SecureStore.deleteItemAsync(secureStoreTokenName);
-    //Remember to delete this!!!!!^^^^^^^^^^^^^^^^^^^^^^^^
     SecureStore.getItemAsync(secureStoreTokenName)
       .then(response => {
         console.log("SecureStore.getItemAsync success")        
-        this.setState({ activeJWT: response, isCheckingTokenStorage: false })
+        this.setState({ activeJWT: response })
       })
       .catch(error => {
         console.log("SecureStore.getItemAsync error")
@@ -35,7 +36,7 @@ export default class App extends React.Component{
     SecureStore.setItemAsync(secureStoreTokenName, responseJWT)
       .then(response => {
         console.log(response);
-        this.setState({ activeJWT: responseJWT, isCheckingTokenStorage: false })
+        this.setState({ activeJWT: responseJWT })
       })    
   }
 
@@ -45,7 +46,27 @@ export default class App extends React.Component{
     SecureStore.deleteItemAsync(secureStoreTokenName);
   }
 
-  authentication = () => {
+ /* authentication = () => {
+    const notLogged = (
+      <Stack.Screen name="NotLogged" options={{headerShown: false}}>
+        { props => <NotLoggedContainer 
+                      {...props} 
+                      onLoginReceiveJWT={ this.onLoginReceiveJWT }
+                    ></NotLoggedContainer>}
+      </Stack.Screen>
+    );
+
+    const loggedIn = (
+      <Stack.Screen name="LoggedIn" options={{headerShown: false}}>
+         { props => <LoggedInContainer 
+                      {...props} 
+                      activeJWT={ this.state.activeJWT } 
+                      apiURI={ this.props.apiURI }
+                      onLogout={ this.onLogout }
+                    ></LoggedInContainer>}
+    </Stack.Screen>
+    );*/
+
     if (this.state.activeJWT == null)  { 
       console.log(this.state.activeJWT)
       return (
@@ -66,13 +87,23 @@ export default class App extends React.Component{
             </View>
         </View>
       );
+
+     /* return notLogged;
     }
+    else{
+        return loggedIn;
+ master
+    }*/
   }
  
   render(){
     return(
-      <View style={{flex : 1}}>
-        {this.authentication()}
+      <View style={{ flex: 1}}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            { this.authentication() }
+          </Stack.Navigator>
+        </NavigationContainer>
       </View>
     );
   }
