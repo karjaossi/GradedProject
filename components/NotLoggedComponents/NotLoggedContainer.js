@@ -4,17 +4,18 @@ import Login from '../LoginComponents/Login';
 import Search from '../SearchComponents/Search';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import Header from '../Header';
 
 
 const Drawer = createDrawerNavigator();
 
 
-export default class NotLoggedHeader extends React.Component {
+export default class NotLoggedContainer extends React.Component {
 
   static navigationOptions = function(props) {
     return {
       title: 'Test',
-      headerLeft: <Button onPress={() => props.navigation.navigate('DrawerOpen')} title= "PERKKELE" />
+      headerLeft: <Button onPress={() => navigation.openDrawer()} title= "PERKKELE" />
     }
   };
   
@@ -41,7 +42,7 @@ export default class NotLoggedHeader extends React.Component {
         },
         header: {
           
-        }
+        },
         menu: {
           backgroundColor: 'rgb(15,200,55)',
           textDecorationColor: 'rgb(200,20,15)',
