@@ -8,7 +8,7 @@ const Login = (props) => {
 
 
     function loginClick() {
-        fetch(props.apiURI + '/login', {
+        fetch('http://192.168.43.102:3000' + '/login', {
           method: 'GET',
           headers: {
             "Authorization": "Basic " + Base64.encode(userName + ":" + password)

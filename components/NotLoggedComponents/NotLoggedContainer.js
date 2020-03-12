@@ -19,12 +19,12 @@ export default class NotLoggedHeader extends React.Component {
   };
   
     render(){
-
+          console.log(this.props.onLoginReceiveJWT)
           return(
             <View style={ styles.container }>
             <NavigationContainer>
               <Drawer.Navigator style={ styles.menu }>
-                  <Drawer.Screen name="Login" component={Login}/>
+                  <Drawer.Screen name="Login">{ props => <Login {...props} onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>}</Drawer.Screen>
                   <Drawer.Screen name="Search" component={Search}/>
               </Drawer.Navigator>
             </NavigationContainer>
@@ -41,7 +41,7 @@ export default class NotLoggedHeader extends React.Component {
         },
         header: {
           
-        }
+        },
         menu: {
           backgroundColor: 'rgb(15,200,55)',
           textDecorationColor: 'rgb(200,20,15)',

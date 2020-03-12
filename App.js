@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import * as SecureStore from 'expo-secure-store'
 import NotLoggedHeader from './components/NotLoggedComponents/NotLoggedContainer';
-import LoggedInHeader from './components/LoginComponents/LoggedInHeader';
+import LoggedInHeader from './components/LoginComponents/LoggedInContainer';
 
 const secureStoreTokenName = "loginToken";
 
