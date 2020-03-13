@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Button, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import AddListing from '../ListingComponents/AddListing'
+import DeleteListings from '../ListingComponents/DeleteListings'
+import { Base64 } from 'js-base64';
 
 const Stack = createStackNavigator();
 
@@ -21,8 +23,7 @@ export default class MyListings extends React.Component {
             method: 'GET'
         } )
             .then( response => response.json() )
-            .then( json =>{console.log(json.everylisting.map(x => x.userId)); this.setState({myitems: json.everylisting.map(x => x.id) })})
-            ; 
+            .then( json =>{console.log(json.everylisting.map(x => x.userId));console.log(Base64.decode(this.props.activeJWT)); this.setState({myitems: json.everylisting })}); 
     }
 
     onListingAdd = (title, description, category, location, price, delivery) => {
@@ -53,17 +54,23 @@ export default class MyListings extends React.Component {
     }
 
     render() {
-        const { navigate } = this.props.navigation;
             return (
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>{JSON.stringify(this.state.myitems)}</Text>
-                <Button title="Add a listing" onPress={() => navigate('AddListing')}></Button>
-                        <NavigationContainer independent={true}>
-                            <Stack.Navigator>
-                                <Stack.Screen name="AddListing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></AddListing>}</Stack.Screen>
-                            </Stack.Navigator> 
-                        </NavigationContainer>       
+                <View style={styles.listingsContainer}>
+                    <ScrollView>
+                        <DeleteListings items={ this.state.myitems } ></DeleteListings>   
+                    </ScrollView> 
                 </View>
             );  
     }
 }
+
+const styles = StyleSheet.create({
+    listingsContainer: {
+       backgroundColor: 'rgba(5, 5, 5, 0.85 )',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
+  })

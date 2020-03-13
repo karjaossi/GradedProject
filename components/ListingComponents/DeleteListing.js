@@ -2,15 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
-const Listing = (props) => {
+const DeleteListing = (props) => {
   return (
     <View style={ styles.container }>
       <Entypo name="price-tag" size={100} color="red"></Entypo>
             <Text style={ styles.titleName}>{ props.title}</Text>
-            <Text style={ styles.descriptionName}>{ props.description}</Text>
-            <Text style={ styles.descriptionName}>{ props.category}</Text>
-            <Text style={ styles.descriptionName}>{ props.location}</Text>
-            <Text style={ styles.descriptionName}>{ props.seller}</Text>
+            <Button title="DEL" onClick={ props.onListingDelete }></Button>
     </View>
   )
 }
@@ -40,4 +37,4 @@ const styles = StyleSheet.create({
   
 })
 
-export default Listing
+export default DeleteListing
