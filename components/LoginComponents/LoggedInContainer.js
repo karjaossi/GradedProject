@@ -71,15 +71,14 @@ export default class LoggedInContainer extends React.Component {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#fff',
+            backgroundColor: 'rgba(0, 55, 5, 1.0)',
             width: '100%'
         },
         header: {
           
         },
         menu: {
-          backgroundColor: 'rgb(15,200,55)',
-          textDecorationColor: 'rgb(200,20,15)',
+          backgroundColor: 'rgba(0, 5, 5, 1.0)'
         }
 });
 
