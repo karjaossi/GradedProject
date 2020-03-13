@@ -3,16 +3,19 @@ import { Button, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-n
 import Login from '../LoginComponents/Login';
 import Search from '../SearchComponents/Search';
 import { NavigationContainer } from '@react-navigation/native';
+import { NavigationActions } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AllListings from '../ListingComponents/AllListings';
 import MyListings from '../ListingComponents/MyListings';
 import AddListing from '../ListingComponents/AddListing'
+import Logout from '../LoginComponents/Login'
 import Header from '../Header';
 
 const Drawer = createDrawerNavigator();
 
 
 export default class LoggedInContainer extends React.Component {
+
 
     onListingAdd = (title, description, category, location, images, priceString, delivery) => {
         var price = parseInt(priceString);
@@ -62,7 +65,7 @@ export default class LoggedInContainer extends React.Component {
                 <Drawer.Screen name="Search">{ props => <Search {...props} APIuri={ this.props.APIuri }></Search>}</Drawer.Screen>
                 <Drawer.Screen name="My Listings">{ props => <MyListings {...props} activeJWT={ this.props.activeJWT } onListingDelete={this.onListingDelete} APIuri={ this.props.APIuri }></MyListings>}</Drawer.Screen>
                 <Drawer.Screen name="Add Listing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></AddListing>}</Drawer.Screen>
-                <Drawer.Screen name="Logout">{ props => <Logout {...props} activeJWT={ this.props.onLogout } APIuri={ this.props.APIuri }></Logout>}</Drawer.Screen>            
+                <Drawer.Screen name="Logout" component={Logout}></Drawer.Screen>            
               </Drawer.Navigator>
             </NavigationContainer>
             </View>
