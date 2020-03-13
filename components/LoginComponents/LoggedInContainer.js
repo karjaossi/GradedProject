@@ -9,7 +9,6 @@ import MyListings from '../ListingComponents/MyListings';
 import AddListing from '../ListingComponents/AddListing'
 import Header from '../Header';
 
-
 const Drawer = createDrawerNavigator();
 
 
@@ -19,7 +18,7 @@ export default class LoggedInContainer extends React.Component {
         var price = parseInt(priceString);
         console.log("JWT " + this.props.activeJWT);
         console.log(JSON.stringify({ title, description, category, location, images, price, delivery }));
-        fetch('http://192.168.43.102:3000' + '/listings', {
+        fetch(this.props.APIuri + '/listings', {
             method: 'POST',
             headers: {
                 "Authorization": "Bearer " + this.props.activeJWT,
@@ -56,10 +55,10 @@ export default class LoggedInContainer extends React.Component {
             <View style={ styles.container }>
             <NavigationContainer>
               <Drawer.Navigator style={ styles.menu }>
-                <Drawer.Screen name="Listings" component={AllListings}/>
-                <Drawer.Screen name="Search" component={Search}/>
-                <Drawer.Screen name="My Listings" component={MyListings}/>
-                <Drawer.Screen name="Add Listing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd}></AddListing>}</Drawer.Screen>
+                <Drawer.Screen name="Listings">{ props => <AllListings {...props} APIuri={ this.props.APIuri }></AllListings>}</Drawer.Screen>
+                <Drawer.Screen name="Search">{ props => <Search {...props} APIuri={ this.props.APIuri }></Search>}</Drawer.Screen>
+                <Drawer.Screen name="My Listings">{ props => <MyListings {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></MyListings>}</Drawer.Screen>
+                <Drawer.Screen name="Add Listing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></AddListing>}</Drawer.Screen>
                 <Drawer.Screen name="Logout">{this.props.onLogout}</Drawer.Screen>            
               </Drawer.Navigator>
             </NavigationContainer>
