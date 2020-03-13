@@ -25,9 +25,9 @@ export default class NotLoggedContainer extends React.Component {
             <View style={ styles.container }>
             <NavigationContainer>
               <Drawer.Navigator style={ styles.menu }>
-                  <Drawer.Screen name="Login">{ props => <Login {...props} onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>}</Drawer.Screen>
-                  <Drawer.Screen name="Listings" component={AllListings}/>
-                  <Drawer.Screen name="Search" component={Search}/>
+                  <Drawer.Screen name="Login">{ props => <Login {...props} APIuri={ this.props.APIuri } onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>}</Drawer.Screen>
+                  <Drawer.Screen name="Listings">{ props => <AllListings {...props} APIuri={ this.props.APIuri }></AllListings>}</Drawer.Screen>
+                  <Drawer.Screen name="Search">{ props => <Search {...props} APIuri={ this.props.APIuri }></Search>}</Drawer.Screen>
               </Drawer.Navigator>
             </NavigationContainer>
             </View>

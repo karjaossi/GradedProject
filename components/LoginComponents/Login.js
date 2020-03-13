@@ -6,9 +6,8 @@ const Login = (props) => {
     const [userName, setUserName] = useState("tester");
     const [password, setPassword] = useState("testpw");
 
-
     function loginClick() {
-        fetch('http://87.92.78.131:3000' + '/login', {
+        fetch(props.APIuri + '/login', {
           method: 'GET',
           headers: {
             "Authorization": "Basic " + Base64.encode(userName + ":" + password)
