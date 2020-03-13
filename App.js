@@ -17,8 +17,10 @@ export default class App extends React.Component{
       APIuri: 'http://87.92.78.131:3000'
     };
   }
+
   componentDidMount() {
     SecureStore.deleteItemAsync(secureStoreTokenName);
+    //Keeping this^^ here so you could logout since the actual logout button doesnt work
     SecureStore.getItemAsync(secureStoreTokenName)
       .then(response => {
         console.log("SecureStore.getItemAsync success")        
@@ -30,6 +32,7 @@ export default class App extends React.Component{
       });
   }
 
+  //On login function, sets the jwt token into secure storage
   onLoginReceiveJWT = (responseJWT) => {
     SecureStore.setItemAsync(secureStoreTokenName, responseJWT)
       .then(response => {
@@ -38,6 +41,7 @@ export default class App extends React.Component{
       })    
   }
 
+  //On logout function, clears the secure storage and nullifies active the state
   onLogout = () => {
     console.log("Logout Clicked");
     this.setState({ activeJWT: null })
@@ -45,6 +49,7 @@ export default class App extends React.Component{
   }
 
   render(){
+    //Checking if the user has already logged in (currently unused since the app is set to log users out when refreshing)
     if (this.state.activeJWT == null)  { 
       return (
         <View style={styles.header}>
