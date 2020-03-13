@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableHighlight } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, StyleSheet } from 'react-native'
 
 const AddListing = (props) => {
 
@@ -12,50 +12,79 @@ const AddListing = (props) => {
   const [images, setImages] = useState("null"); 
   
   return (
-    <View style={{ alignItems: 'center', flex: 1, justifyContent: 'flex-start', marginTop: 30}}>        
-        <Text >Add a new listing</Text>
+    <View style={ styles.screen }>        
+        <Text style={styles.text}>Add a new listing</Text>
 
-        <View style={{ flexDirection: 'row', height: 40, width: '90%', justifyContent: 'center', marginBottom: 40}}>
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+        <View>
+            <TextInput style={ styles.input }
                 onChangeText={ value => setTitle(value) }
                 value={ title }>
             </TextInput>         
 
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+            <TextInput style={styles.input}
                 onChangeText={ value => setDescription(value) }
                 value={ description }>
             </TextInput>  
             
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+            <TextInput style={styles.input}
                 onChangeText={ value => setCategory(value) }
                 value={ category }>
             </TextInput>  
 
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+            <TextInput style={styles.input}
                 onChangeText={ value => setLocation(value) }
                 value={ location }>
             </TextInput>  
 
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+            <TextInput style={styles.input}
                 onChangeText={ value => setPrice(value) }
                 value={ priceString }
                 keyboardType='numeric'>
             </TextInput>
 
-            <TextInput style={{ flex: 2, borderWidth: 1, borderColor: 'black', backgroundColor: 'white' }}
+            <TextInput style={styles.input}
                 onChangeText={ value => setDelivery(value) }
                 value={ delivery }>
             </TextInput>    
 
 
           <TouchableHighlight onPress={ () => props.onListingAdd(title, description, category, location, images, priceString, delivery) }>
-            <View style={ { flex: 1, backgroundColor: 'blue',} }>
-              <Text style={{ color: 'white', padding: 10 }}>Add listing!</Text>
+            <View style={styles.add}>
+              <Text style={styles.text}>ADD</Text>
             </View>
           </TouchableHighlight>
         </View>   
       </View>
   )
 }
+
+const styles = StyleSheet.create({
+  screen: {
+      backgroundColor: 'rgba(5, 5, 5, 0.85 )',
+      flex: 1,
+      justifyContent: 'center',
+      width: '100%',        
+      alignItems: 'center'
+  },
+  text: {
+    fontSize: 20,
+    color: 'red'
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 5,
+    height: 45,
+    width: '80%',
+    backgroundColor: 'rgba(255, 255, 255, 0.6 )',
+    textAlign: 'center',
+    fontSize: 18,
+    marginTop: 5,
+    marginBottom: 20
+  },
+  add: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 5, 5, 1.0)'
+  }
+});
 
 export default AddListing
