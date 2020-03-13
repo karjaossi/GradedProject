@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 
 import * as SecureStore from 'expo-secure-store'
 import NotLoggedContainer from './components/NotLoggedComponents/NotLoggedContainer';
 import LoggedInContainer from './components/LoginComponents/LoggedInContainer';
 import Header from './components/Header';
 
-const Stack = createStackNavigator();
 const secureStoreTokenName = "loginToken";
 
 export default class App extends React.Component{
@@ -16,7 +13,8 @@ export default class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      activeJWT: null
+      activeJWT: null,
+      APIuri: 'http://192.168.43.102:3000'
     };
   }
   componentDidMount() {
@@ -46,33 +44,13 @@ export default class App extends React.Component{
     SecureStore.deleteItemAsync(secureStoreTokenName);
   }
 
- /* authentication = () => {
-    const notLogged = (
-      <Stack.Screen name="NotLogged" options={{headerShown: false}}>
-        { props => <NotLoggedContainer 
-                      {...props} 
-                      onLoginReceiveJWT={ this.onLoginReceiveJWT }
-                    ></NotLoggedContainer>}
-      </Stack.Screen>
-    );
-
-    const loggedIn = (
-      <Stack.Screen name="LoggedIn" options={{headerShown: false}}>
-         { props => <LoggedInContainer 
-                      {...props} 
-                      activeJWT={ this.state.activeJWT } 
-                      apiURI={ this.props.apiURI }
-                      onLogout={ this.onLogout }
-                    ></LoggedInContainer>}
-    </Stack.Screen>
-    );*/
-    render(){
+  render(){
     if (this.state.activeJWT == null)  { 
       return (
         <View style={styles.header}>
           <Header></Header>
             <View style={styles.container}>
-              <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT }></NotLoggedContainer>
+              <NotLoggedContainer onLoginReceiveJWT={ this.onLoginReceiveJWT } APIuri={ this.state.APIuri }></NotLoggedContainer>
             </View>
         </View>
       );
@@ -82,21 +60,11 @@ export default class App extends React.Component{
         <View style={styles.header}>
           <Header></Header>
             <View style={styles.container}>
-              <LoggedInContainer onLogout={ this.onLogout } activeJWT={ this.state.activeJWT }></LoggedInContainer>
+              <LoggedInContainer onLogout={ this.onLogout } activeJWT={ this.state.activeJWT } APIuri={ this.state.APIuri }></LoggedInContainer>
             </View>
         </View>
       );
-
-     /* return notLogged;
     }
-    else{
-        return loggedIn;
- master
-    }*/
-  }
- 
-
-
   }
 }
 

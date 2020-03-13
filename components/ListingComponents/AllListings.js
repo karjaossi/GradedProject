@@ -12,7 +12,7 @@ export default class AllListings extends React.Component {
 
     componentDidMount() {
         console.log('Getting all listings!')
-        fetch( 'http://87.92.78.131:3000' + '/listings',{
+        fetch(this.props.APIuri + '/listings',{
             method: 'GET'
         } )
             .then( response => response.json() )
