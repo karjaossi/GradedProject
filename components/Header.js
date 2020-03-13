@@ -2,14 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem,
+  } from '@react-navigation/drawer';
 
 
 
 export default function Header(){
+    
     return(
-        <View style={styles.header}>
-            <View>
+        <View >
+            <View style={styles.header}>
                 <Text style={styles.headerText}>Marketplace</Text>
             </View>
         </View>

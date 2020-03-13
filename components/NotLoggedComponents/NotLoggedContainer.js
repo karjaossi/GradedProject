@@ -5,6 +5,7 @@ import Search from '../SearchComponents/Search';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Header from '../Header';
+import AllListings from '../ListingComponents/AllListings';
 
 
 const Drawer = createDrawerNavigator();
@@ -22,9 +23,10 @@ export default class NotLoggedContainer extends React.Component {
     render(){
           return(
             <View style={ styles.container }>
-            <NavigationContainer independent={true}>
+            <NavigationContainer>
               <Drawer.Navigator style={ styles.menu }>
                   <Drawer.Screen name="Login">{ props => <Login {...props} onLoginReceiveJWT={ this.props.onLoginReceiveJWT }></Login>}</Drawer.Screen>
+                  <Drawer.Screen name="Listings" component={AllListings}/>
                   <Drawer.Screen name="Search" component={Search}/>
               </Drawer.Navigator>
             </NavigationContainer>

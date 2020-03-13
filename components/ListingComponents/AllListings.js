@@ -12,11 +12,11 @@ export default class AllListings extends React.Component {
 
     componentDidMount() {
         console.log('Getting all listings!')
-        fetch( 'http://87.92.115.240:3000' + '/listings',{
+        fetch( 'http://87.92.78.131:3000' + '/listings',{
             method: 'GET'
         } )
             .then( response => response.json() )
-            .then( json =>{console.log(json); /*this.setState({items: json.everylisting })*/}); 
+            .then( json =>{console.log(json.everylisting); this.setState({items: json.everylisting })}); 
     }
     
 
@@ -24,7 +24,7 @@ export default class AllListings extends React.Component {
     return (
       <View style={styles.listingsContainer}>
         <Text>Placeholder</Text>
-        <Text>{this.state.items}</Text>
+      
       </View>
     );
   }
