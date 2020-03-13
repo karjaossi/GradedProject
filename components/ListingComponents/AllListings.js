@@ -11,6 +11,7 @@ export default class AllListings extends React.Component {
         };
     }
 
+    // Gets all listings in ID order to state
     componentDidMount() {
         console.log('Getting all listings!')
         fetch(this.props.APIuri + '/listings',{
@@ -21,7 +22,7 @@ export default class AllListings extends React.Component {
             ; 
     }
     
-
+    // Renders the listings based on Listings component that has connection to Listing component. Original names am I right?
   render() {
     return (
       <View style={styles.listingsContainer}>
