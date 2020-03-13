@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableHighlight, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableHighlight, Button, StyleSheet, Alert } from 'react-native'
 import { Base64 } from 'js-base64'
 
 const Signup = (props) => {
@@ -27,6 +27,9 @@ const Signup = (props) => {
           console.log("Sign up successful")
           console.log("Received following JSON");
           console.log(json);
+          Alert.alert(
+            'You have created an account! Now please login :-)'
+         );
         })
         .catch(error => {
           console.log("Error message:")

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Button, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native'
 import Login from '../LoginComponents/Login';
 import Search from '../SearchComponents/Search';
 import { NavigationContainer } from '@react-navigation/native';
@@ -36,6 +36,9 @@ export default class LoggedInContainer extends React.Component {
             console.log("Listing POST successful")
             console.log("Received following JSON");
             console.log(json);
+            Alert.alert(
+              'You have added a new posting!'
+           );
             })
             .catch(error => {
             console.log("Error message:")
