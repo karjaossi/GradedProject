@@ -3,19 +3,19 @@ import { Text, View, TextInput, TouchableHighlight, StyleSheet } from 'react-nat
 
 const AddListing = (props) => {
 
-  const [title, setTitle] = useState("Example title");
-  const [description, setDescription] = useState("Example description");  
-  const [category, setCategory] = useState("Example category");  
-  const [location, setLocation] = useState("Example location");   
-  const [priceString, setPrice] = useState("1");  
-  const [delivery, setDelivery] = useState("Example delivery");
+  const [title, setTitle] = useState("Set title");
+  const [description, setDescription] = useState("Set description");  
+  const [category, setCategory] = useState("Set your category");  
+  const [location, setLocation] = useState("Set your location");   
+  const [priceString, setPrice] = useState("Set Price here");  
+  const [delivery, setDelivery] = useState("Shipping or Pick-up?");
   const [images, setImages] = useState("null"); 
   
   return (
     <View style={ styles.screen }>        
         <Text style={styles.text}>Add a new listing</Text>
 
-        <View>
+        <View style={ styles.inputView }>
             <TextInput style={ styles.input }
                 onChangeText={ value => setTitle(value) }
                 value={ title }>
@@ -84,6 +84,11 @@ const styles = StyleSheet.create({
   add: {
     alignItems: 'center',
     backgroundColor: 'rgba(0, 5, 5, 1.0)'
+  },
+  inputView: {
+    justifyContent: "center",
+    width: "100%",
+    alignItems: "center"
   }
 });
 

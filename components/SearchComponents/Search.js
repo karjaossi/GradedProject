@@ -11,6 +11,15 @@ export default class Search extends React.Component {
     this.setState({ search });
   };
 
+  componentDidMount() {
+    console.log('Getting all listings!')
+    fetch(this.props.APIuri + '/listings',{
+        method: 'GET'
+    } )
+        .then( response => response.json() )
+        .then( json =>{console.log(json.everylisting); this.setState({search: json.everylisting })}); 
+}
+
   render() {
     const { search } = this.state;
 

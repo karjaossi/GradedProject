@@ -14,7 +14,7 @@ export default class App extends React.Component{
     super(props);
     this.state = {
       activeJWT: null,
-      APIuri: 'http://192.168.43.102:3000'
+      APIuri: 'http://87.92.78.131:3000'
     };
   }
   componentDidMount() {

@@ -59,7 +59,7 @@ export default class LoggedInContainer extends React.Component {
                 <Drawer.Screen name="Search">{ props => <Search {...props} APIuri={ this.props.APIuri }></Search>}</Drawer.Screen>
                 <Drawer.Screen name="My Listings">{ props => <MyListings {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></MyListings>}</Drawer.Screen>
                 <Drawer.Screen name="Add Listing">{ props => <AddListing {...props} activeJWT={ this.props.activeJWT } onListingAdd={this.onListingAdd} APIuri={ this.props.APIuri }></AddListing>}</Drawer.Screen>
-                <Drawer.Screen name="Logout">{this.props.onLogout}</Drawer.Screen>            
+                <Drawer.Screen name="Logout">{ props => <Logout {...props} activeJWT={ this.props.onLogout } APIuri={ this.props.APIuri }></Logout>}</Drawer.Screen>            
               </Drawer.Navigator>
             </NavigationContainer>
             </View>

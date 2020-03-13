@@ -16,7 +16,7 @@ export default function Header(){
     return(
         <View >
             <View style={styles.header}>
-                <Text style={styles.headerText}>Marketplace</Text>
+                <Text style={styles.headerText}>MARKETPLACE</Text>
             </View>
         </View>
     );
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: 'red',
-        letterSpacing: 1
+        letterSpacing: 4
     }
 })
