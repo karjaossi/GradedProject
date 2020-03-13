@@ -8,6 +8,23 @@ const Stack = createStackNavigator();
 
 export default class MyListings extends React.Component {
 
+    constructor(props) {
+        super(props);
+            this.state = {
+                myitems: []
+            };
+        }
+
+    componentDidMount() {
+        console.log('Getting all listings!')
+        fetch(this.props.APIuri + '/listings',{
+            method: 'GET'
+        } )
+            .then( response => response.json() )
+            .then( json =>{console.log(json.everylisting.map(x => x.userId)); this.setState({myitems: json.everylisting.map(x => x.id) })})
+            ; 
+    }
+
     onListingAdd = (title, description, category, location, price, delivery) => {
         console.log(JSON.stringify({ title, description, category, location, price, delivery }));
         fetch(this.props.APIuri + '/listings', {
@@ -39,7 +56,7 @@ export default class MyListings extends React.Component {
         const { navigate } = this.props.navigation;
             return (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>test</Text>
+                <Text>{JSON.stringify(this.state.myitems)}</Text>
                 <Button title="Add a listing" onPress={() => navigate('AddListing')}></Button>
                         <NavigationContainer independent={true}>
                             <Stack.Navigator>

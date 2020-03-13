@@ -17,7 +17,8 @@ export default class AllListings extends React.Component {
             method: 'GET'
         } )
             .then( response => response.json() )
-            .then( json =>{console.log(json.everylisting); this.setState({items: json.everylisting })}); 
+            .then( json =>{console.log(json.everylisting.map(x => x.userId)); this.setState({items: json.everylisting })})
+            ; 
     }
     
 

@@ -3,12 +3,12 @@ import { Text, View, TextInput, TouchableHighlight, StyleSheet } from 'react-nat
 
 const AddListing = (props) => {
 
-  const [title, setTitle] = useState("Set title");
-  const [description, setDescription] = useState("Set description");  
-  const [category, setCategory] = useState("Set your category");  
-  const [location, setLocation] = useState("Set your location");   
-  const [priceString, setPrice] = useState("Set Price here");  
-  const [delivery, setDelivery] = useState("Shipping or Pick-up?");
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);  
+  const [category, setCategory] = useState(null);  
+  const [location, setLocation] = useState(null);   
+  const [priceString, setPrice] = useState(null);  
+  const [delivery, setDelivery] = useState(null);
   const [images, setImages] = useState("null"); 
   
   return (
@@ -18,32 +18,38 @@ const AddListing = (props) => {
         <View style={ styles.inputView }>
             <TextInput style={ styles.input }
                 onChangeText={ value => setTitle(value) }
+                placeholder="Set title"
                 value={ title }>
             </TextInput>         
 
             <TextInput style={styles.input}
                 onChangeText={ value => setDescription(value) }
+                placeholder="Set description"
                 value={ description }>
             </TextInput>  
             
             <TextInput style={styles.input}
                 onChangeText={ value => setCategory(value) }
+                placeholder="Set your location"
                 value={ category }>
             </TextInput>  
 
             <TextInput style={styles.input}
                 onChangeText={ value => setLocation(value) }
+                placeholder="Set your location"
                 value={ location }>
             </TextInput>  
 
             <TextInput style={styles.input}
                 onChangeText={ value => setPrice(value) }
+                placeholder="Set Price here"
                 value={ priceString }
                 keyboardType='numeric'>
             </TextInput>
 
             <TextInput style={styles.input}
                 onChangeText={ value => setDelivery(value) }
+                placeholder="Shipping or Pick-up?"
                 value={ delivery }>
             </TextInput>    
 
@@ -75,11 +81,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 45,
     width: '80%',
-    backgroundColor: 'rgba(255, 255, 255, 0.6 )',
+    backgroundColor: 'black',
     textAlign: 'center',
     fontSize: 18,
     marginTop: 5,
-    marginBottom: 20
+    marginBottom: 20,
+    color: "red"
   },
   add: {
     alignItems: 'center',
