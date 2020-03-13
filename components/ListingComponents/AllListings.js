@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import Listings from './Listings';
 
 export default class AllListings extends React.Component {
 
@@ -23,8 +24,9 @@ export default class AllListings extends React.Component {
   render() {
     return (
       <View style={styles.listingsContainer}>
-        <Text>Placeholder</Text>
-      
+        <ScrollView>
+          <Listings items={ this.state.items }></Listings>
+        </ScrollView>
       </View>
     );
   }
