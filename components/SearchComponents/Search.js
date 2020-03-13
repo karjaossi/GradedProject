@@ -4,7 +4,7 @@ import { SearchBar } from 'react-native-elements';
 import Listings from '../ListingComponents/Listings';
 
 export default class Search extends React.Component {
-
+ // Doesn't work -.-
   constructor(props) {
     super(props);
         this.state = {

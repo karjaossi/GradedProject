@@ -8,7 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import AllListings from '../ListingComponents/AllListings';
 import MyListings from '../ListingComponents/MyListings';
 import AddListing from '../ListingComponents/AddListing'
-import Logout from '../LoginComponents/Login'
+import Logout from '../LoginComponents/Logout'
 import Header from '../Header';
 
 const Drawer = createDrawerNavigator();
@@ -48,14 +48,15 @@ export default class LoggedInContainer extends React.Component {
             console.log(error.message)
             });
     }
-
+    //Were trying to build a button so that drawer opens from left without swipe as the gestures are pretty bad.
   static navigationOptions = function(props) {
     return {
       title: 'Test',
-      headerLeft: <Button onPress={() => navigation.openDrawer()} title= "PERKKELE" />
+      headerLeft: <Button onPress={() => navigation.openDrawer()} title= "Ei toimi" />
     }
   };
-  
+    //Drawer menu for the view when you are logged in
+    //Props are also passed here.
     render(){
           return(
             <View style={ styles.container }>

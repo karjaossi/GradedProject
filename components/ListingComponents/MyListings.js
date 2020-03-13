@@ -8,6 +8,11 @@ import { Base64 } from 'js-base64';
 
 const Stack = createStackNavigator();
 
+// We were trying to make a page where you can delete and modify postings
+// But at the end we can just list them all here but can't do those tasks.
+
+// In the future we need to build better features for API aswell.
+
 export default class MyListings extends React.Component {
 
     constructor(props) {
