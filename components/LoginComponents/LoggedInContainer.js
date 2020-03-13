@@ -30,7 +30,6 @@ export default class LoggedInContainer extends React.Component {
               <Drawer.Navigator style={ styles.menu }>
                 <Drawer.Screen name="Listings" component={AllListings}/>
                 <Drawer.Screen name="Search" component={Search}/>
-                <Drawer.Screen name="Login" component={Search}/>
                 <Drawer.Screen name="My Listings" component={MyListings}/>
                 <Drawer.Screen name="Add Listing" component={AddListing}/>
                 <Drawer.Screen name="Logout">{this.props.onLogout}</Drawer.Screen>            

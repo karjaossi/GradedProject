@@ -10,7 +10,7 @@ export default class MyListings extends React.Component {
 
     onListingAdd = (title, description, category, location, price, delivery) => {
         console.log(JSON.stringify({ title, description, category, location, price, delivery }));
-        fetch('http://192.168.43.102:3000' + '/listings', {
+        fetch('http://87.92.78.131:3000' + '/listings', {
             method: 'POST',
             headers: {
                 "Authorization": "Bearer " + this.props.activeJWT,
@@ -41,10 +41,10 @@ export default class MyListings extends React.Component {
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>test</Text>
                 <Button title="Add a listing" onPress={() => navigate('AddListing')}></Button>
-                <NavigationContainer independent={true}>
-                        <Stack.Navigator>
-                            <Stack.Screen name="AddListing" component={AddListing} />
-                        </Stack.Navigator> 
+                        <NavigationContainer independent={true}>
+                            <Stack.Navigator>
+                                <Stack.Screen name="AddListing" component={AddListing} />
+                            </Stack.Navigator> 
                         </NavigationContainer>       
                 </View>
             );  

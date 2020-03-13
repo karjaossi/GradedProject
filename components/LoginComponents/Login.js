@@ -8,7 +8,7 @@ const Login = (props) => {
 
 
     function loginClick() {
-        fetch('http://87.92.115.240:3000' + '/login', {
+        fetch('http://87.92.78.131:3000' + '/login', {
           method: 'GET',
           headers: {
             "Authorization": "Basic " + Base64.encode(userName + ":" + password)
@@ -55,7 +55,7 @@ const Login = (props) => {
               <Text style={ styles.primaryButtonText }>Login</Text>
             </View>
           </TouchableHighlight>
-          <Button title="Sign up" color="#000000" onPress={ () => props.navigation.navigate('Signup') } />
+          <Button title="Sign up" color="#000000" onPress={ () => props.navigation.navigate('Search') } />
         </View>
       )
     }
