@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableHighlight, Button, StyleSheet } from 'react-native'
 import { Base64 } from 'js-base64'
 
-const Login = (props) => {
-    const [userName, setUserName] = useState("tester");
-    const [password, setPassword] = useState("testpw");
+const Signup = (props) => {
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
-    function loginClick() {
-        fetch(props.APIuri + '/login', {
-          method: 'GET',
-          headers: {
-            "Authorization": "Basic " + Base64.encode(userName + ":" + password)
-          }
-        })
+    function signupClick() {
+        fetch(props.APIuri + '/register', {
+            method: 'POST',
+            body: JSON.stringify({
+              username: userName,
+              password: password
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+          })
         .then(response => {
           if (response.ok == false) {
             throw new Error("HTTP Code " + response.status + " - " + JSON.stringify(response.json()));
@@ -20,11 +24,9 @@ const Login = (props) => {
           return response.json();
         })
         .then(json => {
-          console.log("Login successful")
+          console.log("Sign up successful")
           console.log("Received following JSON");
           console.log(json);
-    
-          props.onLoginReceiveJWT(json.token);
         })
         .catch(error => {
           console.log("Error message:")
@@ -34,24 +36,24 @@ const Login = (props) => {
     
       return (
         <View style={ styles.screen }>
-          <Text style={ styles.header }>Login to Marketplace</Text>
-          <Text style={ styles.text }>Username</Text>
+          <Text style={ styles.header }>Create an account</Text>
+          <Text style={ styles.text }>Choose your username</Text>
           <TextInput
             style={ styles.input }
             value={ userName }
-            placeholder="userdude"
+            placeholder="Username"
             onChangeText={ value => setUserName(value)}
           />
-          <Text style={ styles.text }>Password</Text>
+          <Text style={ styles.text }>Choose your assword</Text>
           <TextInput
             style={ styles.input }
             value={ password }
-            placeholder="password"
+            placeholder="Password"
             onChangeText={ value => setPassword(value)}
           />
-          <TouchableHighlight onPress={ () => loginClick() }>
+          <TouchableHighlight onPress={ () => signupClick() }>
             <View style={ styles.primaryButton }>
-              <Text style={ styles.primaryButtonText }>Login</Text>
+              <Text style={ styles.primaryButtonText }>Sign up</Text>
             </View>
           </TouchableHighlight>
         </View>
@@ -104,4 +106,4 @@ const styles = StyleSheet.create({
     }
     });
 
-export default Login
+export default Signup
