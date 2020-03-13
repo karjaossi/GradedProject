@@ -5,7 +5,15 @@ import Listing from './Listing';
 const Listings = (props) => {
   return (
     <View style={ [styles.container, props.style] }>
-      { props.items.map(x => <Listing key={x.id} title={x.title}></Listing>) }
+      { props.items.map(x => <Listing 
+        key={x.id} 
+        title={x.title}
+        description={x.description}
+        category={x.category}
+        location={x.location}
+        seller={x.seller}
+        >
+        </Listing>) }
     </View>
   )
 }

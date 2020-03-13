@@ -24,6 +24,7 @@ export default function Header(){
 
 const styles = StyleSheet.create({
     header: {
+        backgroundColor: 'black',
         width: '100%',
         height: 55,
         flexDirection: 'row',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontWeight: 'bold',
         fontSize: 20,
-        color: '#333',
+        color: 'red',
         letterSpacing: 1
     }
 })

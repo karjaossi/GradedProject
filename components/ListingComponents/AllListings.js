@@ -34,9 +34,11 @@ export default class AllListings extends React.Component {
 
 const styles = StyleSheet.create({
   listingsContainer: {
+     backgroundColor: 'rgba(5, 5, 5, 0.85 )',
       width: '100%',
       height: '100%',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      flex: 1
   },
 })

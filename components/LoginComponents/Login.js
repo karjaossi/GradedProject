@@ -34,12 +34,12 @@ const Login = (props) => {
     
       return (
         <View style={ styles.screen }>
-          <Text style={ styles.header }>Marketplace</Text>
+          <Text style={ styles.header }>Login to Marketplace</Text>
           <Text style={ styles.text }>Username</Text>
           <TextInput
             style={ styles.input }
             value={ userName }
-            placeholder="johndoe"
+            placeholder="userdude"
             onChangeText={ value => setUserName(value)}
           />
           <Text style={ styles.text }>Password</Text>
@@ -61,34 +61,34 @@ const Login = (props) => {
 
 const styles = StyleSheet.create({
     screen: {
-        backgroundColor: 'rgb(51, 153, 255)',
+        backgroundColor: 'rgba(5, 5, 5, 0.85 )',
         flex: 1,
         justifyContent: 'center',
         width: '100%',        
         alignItems: 'center'
     },
     header: {
-        fontSize: 40,
+        fontSize: 35,
         marginBottom: 20,
-        color: 'white'
+        color: 'red'
     },
     text: {
         fontSize: 20,
-        color: 'white'
+        color: 'red'
     },
     input: {
         borderWidth: 1,
-        borderRadius: 20,
-        height: 40,
-        width: '90%',
-        backgroundColor: 'white',
+        borderRadius: 5,
+        height: 45,
+        width: '80%',
+        backgroundColor: 'rgba(255, 255, 255, 0.6 )',
         textAlign: 'center',
         fontSize: 18,
         marginTop: 5,
         marginBottom: 20
     },
     primaryButton: {
-        backgroundColor: 'rgb(0, 153, 51)',
+        backgroundColor: 'red',
         height: 60,
         width: 200,
         justifyContent: 'center',
